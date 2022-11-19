@@ -2,7 +2,7 @@ package bookmyshow.Book_My_Show_Backend.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,14 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@ToString
+
 @Builder
+@Data
 @EntityListeners(value = {AuditingEntityListener.class})
 @Table(name = "ticket_tb")
 public class TicketEntity {
     @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int  id;
 
     @Column(name ="Allowcated_Seats",nullable = false)
     private String allowcted_seats;

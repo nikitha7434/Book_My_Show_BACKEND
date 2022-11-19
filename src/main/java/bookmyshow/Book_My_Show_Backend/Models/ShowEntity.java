@@ -58,6 +58,6 @@ public class ShowEntity {
 
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<TheatreSeatEntity> theatreSeat;
+    private List<showSeatEntity> theatreSeat;
 
 }

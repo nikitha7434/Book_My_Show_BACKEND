@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "show_seats")
@@ -20,7 +21,7 @@ public class showSeatEntity {
 
     String SeateNumber;
 
-    int seatprice;
+    int rate;
 
     SeatType seatType;
     boolean isbooked;

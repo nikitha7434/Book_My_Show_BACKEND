@@ -1,25 +1,24 @@
 package bookmyshow.Book_My_Show_Backend.Convertors;
 
-import bookmyshow.Book_My_Show_Backend.DTO.UserDto;
+import bookmyshow.Book_My_Show_Backend.DTO.EntityRequestDto.UserReqDto;
+import bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto.userRespDto;
 import bookmyshow.Book_My_Show_Backend.Models.UserEntity;
 
 import java.util.Optional;
 
 public class userConvetor {
 
-    public static UserEntity convertuserDtoToEntity(UserDto userDto){
+    public static UserEntity convertuserDtoToEntity(UserReqDto userDto){
 
         // create the user
-        return UserEntity.builder().name(userDto.getName()).Mobile_No(userDto.getMobile_no()).
-                Mail_id(userDto.getGmail()).build();
+        return UserEntity.builder().name(userDto.getName()).Mobile_No(userDto.getMobile_no())
+                .Mail_id(userDto.getMail_id()).build();
+
     }
-    public static UserDto convertuserEtityToDto(Optional<UserEntity> user){
 
-        UserDto build;
-        build = UserDto.builder().id(user.get().getId()).name(user.get().getName()).mobile_no(user.get().getMobile_No())
-                .gmail(user.get().getMail_id())
-                .build();
+    public static userRespDto convertuserEtityToDto(UserEntity  user){
 
-        return build;
+      return userRespDto.builder().id(user.getId()).name(user.getName()).
+              Mobile_no(user.getMobile_No()).mail_id(user.getMail_id()).build();
     }
 }

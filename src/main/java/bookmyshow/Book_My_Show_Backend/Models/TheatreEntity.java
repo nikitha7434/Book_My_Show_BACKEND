@@ -1,17 +1,15 @@
 package bookmyshow.Book_My_Show_Backend.Models;
 
-import bookmyshow.Book_My_Show_Backend.ENUM.SeatType;
+import bookmyshow.Book_My_Show_Backend.ENUM.TheatreType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -32,8 +30,13 @@ private String address;
 @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
         @JsonIgnore
 List<ShowEntity> show;
+
+TheatreType type;
+
 @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
         @JsonIgnore
-private List<TheatreSeatEntity> listofThreatreseat;
+private List<TheatreSeatEntity> seats;
+
+
 
 }

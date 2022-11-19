@@ -23,7 +23,7 @@ public class TheatreSeatEntity {
     @Column(name="seat_no",nullable = false)
    private String seatNumber;
 
-    @Column(name = "priceOfseat",nullable = false)
+    @Column(name = "price",nullable = false)
     int rate;
 
     @Enumerated(EnumType.STRING)
