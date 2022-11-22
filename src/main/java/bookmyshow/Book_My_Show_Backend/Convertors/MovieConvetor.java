@@ -9,11 +9,12 @@ public class MovieConvetor {
     public static MovieEntity convertDtoToEntity(MovieReqDto movieReqDto){
 
 
-      return MovieEntity.builder().movie_name(movieReqDto.getName()).relaseDate(movieReqDto.getReliesDate()).build();
+      return MovieEntity.builder().name(movieReqDto.getName()).relaseDate(movieReqDto.getReliesDate()).build();
 
     }
 
     public static MovieRespDto convetEntityToDto(MovieEntity movieEntity) {
-    return MovieRespDto.builder().id(movieEntity.getId()).reliseDate(movieEntity.getRelaseDate()).name(movieEntity.getMovie_name()).build();
+    return MovieRespDto.builder().id(movieEntity.getId()).reliseDate(movieEntity.getRelaseDate())
+            .name(movieEntity.getName()).build();
     }
 }

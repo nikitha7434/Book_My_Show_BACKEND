@@ -29,7 +29,7 @@ public class TicketEntity {
     private String allowcted_seats;
 
     @Column(name = "amount",nullable = false)
-    double amount;
+    private double amount;
 
     @CreatedDate
             @Temporal(TemporalType.TIMESTAMP)

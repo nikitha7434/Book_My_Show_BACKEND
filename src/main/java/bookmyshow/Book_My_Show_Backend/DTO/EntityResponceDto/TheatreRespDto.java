@@ -1,6 +1,7 @@
 package bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto;
 
 import bookmyshow.Book_My_Show_Backend.ENUM.TheatreType;
+import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
 

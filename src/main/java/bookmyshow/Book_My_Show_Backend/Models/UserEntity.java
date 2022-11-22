@@ -1,5 +1,6 @@
 package bookmyshow.Book_My_Show_Backend.Models;
 
+import bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto.TicketRespoDto;
 import lombok.*;
 
 import javax.persistence.*;

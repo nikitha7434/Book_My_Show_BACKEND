@@ -13,10 +13,10 @@ import java.time.LocalDate;
 public class MovieReqDto {
 
   int id;
-@NotNull
+
     String name;
 
-    @NotNull
+
     LocalDate reliesDate;
 
 

@@ -8,12 +8,12 @@ import lombok.Data;
 @Builder
 public class UserReqDto {
 
-    @NotNull
+
     String name;
 
-    @NotNull
+
     String Mobile_no;
 
-    @NotNull
+
     String mail_id;
 }

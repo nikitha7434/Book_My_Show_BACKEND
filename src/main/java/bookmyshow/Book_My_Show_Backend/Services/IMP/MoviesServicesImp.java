@@ -6,9 +6,14 @@ import bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto.MovieRespDto;
 import bookmyshow.Book_My_Show_Backend.Models.MovieEntity;
 import bookmyshow.Book_My_Show_Backend.Repository.MovieRepository;
 import bookmyshow.Book_My_Show_Backend.Services.Movieservices;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+
+@Slf4j
 @Service
 public class MoviesServicesImp implements Movieservices {
 
@@ -17,10 +22,17 @@ public class MoviesServicesImp implements Movieservices {
 
     @Override
     public MovieRespDto addMovie(MovieReqDto movieReqDto) {
+        MovieRespDto movieRespDto=null;
+        // if movie already created then ew can throe exception
+        if(movieRepository.existsByName(movieReqDto.getName())){
+            movieRespDto.setName("This movie is already Existing");
+            return movieRespDto;
+        }
+    log.info("in the function add Movie"+movieReqDto);
 
         MovieEntity movieEntity= MovieConvetor.convertDtoToEntity(movieReqDto);
         movieEntity=movieRepository.save(movieEntity);
-        MovieRespDto movieRespDto = MovieConvetor.convetEntityToDto(movieEntity);
+       movieRespDto = MovieConvetor.convetEntityToDto(movieEntity);
         return movieRespDto;
     }
 
@@ -31,4 +43,9 @@ public class MoviesServicesImp implements Movieservices {
 
         return movieRespDto;
     }
+      @Override
+    public List<MovieEntity> getAllMovie(){
+        return movieRepository.findAll();
+
+      }
 }

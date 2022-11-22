@@ -14,17 +14,24 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "show_seats")
 @Entity
-@ToString
+//@ToString
 public class showSeatEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    String SeateNumber;
+   @Column(nullable = false)
+   private String SeateNumber;
 
-    int rate;
+   @Column(nullable = false)
+    private int rate;
 
-    SeatType seatType;
-    boolean isbooked;
+   //@Enumerated(EnumType.STRING)
+@Column(name = "seat_type", nullable = false)
+    private SeatType seatType;
+
+    @Column(columnDefinition = "bit(1) defalut 0",nullable = false)
+    private boolean isbooked;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "booked_at")

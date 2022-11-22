@@ -3,6 +3,8 @@ package bookmyshow.Book_My_Show_Backend.Models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jdk.jfr.Timestamp;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -30,14 +32,17 @@ public class ShowEntity {
 
     @Column(name="show_date",columnDefinition = "DATE",nullable = false)
     private LocalDate  showDate;
+
     @Column(name = "show_Time",columnDefinition = "TIME",nullable = false)
     private LocalTime showTime;
 
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     @Column(name = "created_at")
     private Date createdAt;
 
+    @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     @Column(name="update_at")

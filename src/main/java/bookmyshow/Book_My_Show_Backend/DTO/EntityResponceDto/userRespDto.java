@@ -1,7 +1,6 @@
 package bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto;
 
-import bookmyshow.Book_My_Show_Backend.DTO.TicketDto;
-import com.sun.istack.NotNull;
+import bookmyshow.Book_My_Show_Backend.Models.TicketEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,5 +20,5 @@ int id;
     String mail_id;
 
     // list of ticket
-    List<TicketDto> ticketDtoList;
+    List<TicketEntity> listofTicket;
 }

@@ -9,15 +9,20 @@ import bookmyshow.Book_My_Show_Backend.Models.TheatreEntity;
 import bookmyshow.Book_My_Show_Backend.Models.TheatreSeatEntity;
 import bookmyshow.Book_My_Show_Backend.Repository.TheatreRepository;
 import bookmyshow.Book_My_Show_Backend.Repository.TheatreSeatRepository;
+import bookmyshow.Book_My_Show_Backend.Repository.UserRepositry;
 import bookmyshow.Book_My_Show_Backend.Services.TheatreServices;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Slf4j
 @Service
 public class TheatreServiceImp implements TheatreServices {
+
+
     @Autowired
     TheatreSeatRepository theatreSeatRepository;
     @Autowired
@@ -33,12 +38,27 @@ public class TheatreServiceImp implements TheatreServices {
 
         //set the theartd for all seats
 theatreEntity.setSeats(seats);
+
+theatreEntity.setShow(null);
+
+
         for(TheatreSeatEntity theatreSeatEntity:seats){
             theatreSeatEntity.setTheatre(theatreEntity);
         }
 
- // hoe to change theatre Type;
-       theatreEntity.setType(TheatreType.SINGLE);
+
+        TheatreType  type  =theratreDto.getType(); // het theatre type for theaRqDto
+        String sttype =type.toString(); // get convert into string
+
+        // set theatre type
+        if(sttype.equals("SINGLE")){
+            theatreEntity.setType(TheatreType.SINGLE);
+        }
+        else{
+            theatreEntity.setType(TheatreType.MULTIPLEX);
+        }
+
+    log.info(" The theatre Entity is"+theatreEntity);
 
         theatreEntity=theatreRepository.save(theatreEntity);
 

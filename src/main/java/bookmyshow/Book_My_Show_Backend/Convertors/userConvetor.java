@@ -18,7 +18,9 @@ public class userConvetor {
 
     public static userRespDto convertuserEtityToDto(UserEntity  user){
 
-      return userRespDto.builder().id(user.getId()).name(user.getName()).
-              Mobile_no(user.getMobile_No()).mail_id(user.getMail_id()).build();
+      return userRespDto.builder().id(user.getId()).name(user.getName())
+                      .Mobile_no(user.getMobile_No()).mail_id(user.getMail_id())
+                      .listofTicket(user.getListofTicket())
+                      .build();
     }
 }

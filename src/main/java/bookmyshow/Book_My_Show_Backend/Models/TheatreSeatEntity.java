@@ -18,13 +18,13 @@ import javax.persistence.*;
 public class TheatreSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name="seat_no",nullable = false)
    private String seatNumber;
 
     @Column(name = "price",nullable = false)
-    int rate;
+     private int rate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "seat_type",nullable = false)
@@ -35,8 +35,9 @@ public class TheatreSeatEntity {
     private TheatreEntity theatre;
 
 
-    @ManyToOne
-    @JoinColumn(name = "show_entity_id")
-    private ShowEntity show;
+//    @ManyToOne
+//    @JsonIgnore
+//    @JoinColumn
+//    private ShowEntity show;
 
 }

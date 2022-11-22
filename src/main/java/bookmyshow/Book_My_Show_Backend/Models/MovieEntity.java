@@ -20,7 +20,7 @@ public class MovieEntity {
             private int id;
 
     @Column(name = "name",nullable = false)
-    private String movie_name;
+    private String name;
 
     @Column(name = "release_date",columnDefinition = "DATE",nullable = false)
     private LocalDate relaseDate;
@@ -29,5 +29,6 @@ public class MovieEntity {
     @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ShowEntity> shows;
+
 
 }

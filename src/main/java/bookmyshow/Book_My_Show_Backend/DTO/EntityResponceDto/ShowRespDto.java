@@ -8,14 +8,16 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ShowRespDto {
+
+
     int id;
 
     LocalDate ShowDate;
 
     LocalDate showTime;
-   @NotNull
+
     TheatreRespDto theatreDto;
-   @NotNull
+
     MovieRespDto movieRespDto;
 
 }
