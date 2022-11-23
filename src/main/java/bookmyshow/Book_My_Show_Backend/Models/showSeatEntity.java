@@ -14,10 +14,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "show_seats")
 @Entity
-//@ToString
+@ToString
 public class showSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private int id;
 
    @Column(nullable = false)
@@ -26,7 +27,7 @@ public class showSeatEntity {
    @Column(nullable = false)
     private int rate;
 
-   //@Enumerated(EnumType.STRING)
+   @Enumerated(EnumType.STRING)
 @Column(name = "seat_type", nullable = false)
     private SeatType seatType;
 

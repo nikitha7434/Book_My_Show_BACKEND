@@ -13,7 +13,7 @@ import java.time.LocalTime;
 @Builder
 public class showReqDto {
 
-
+int id;
 LocalDate ShowDate;
 
 LocalTime showTime;
