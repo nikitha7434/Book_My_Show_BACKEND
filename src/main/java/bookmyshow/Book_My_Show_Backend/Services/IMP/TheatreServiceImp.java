@@ -107,4 +107,7 @@ theatreEntity.setShow(null);
     }
 
 
+    public List<TheatreEntity> getAllTheatre() {
+     return  theatreRepository.findAll();
+    }
 }

@@ -92,4 +92,5 @@ public class showServiceImp implements showServices {
 
     showEntity.setTheatreSeat(showSeatEntitiesList);
   }
+
 }

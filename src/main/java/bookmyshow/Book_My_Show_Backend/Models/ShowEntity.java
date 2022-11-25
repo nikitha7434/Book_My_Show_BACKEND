@@ -31,9 +31,9 @@ public class ShowEntity {
     private int id;
 
     @Column(name="show_date",columnDefinition = "DATE",nullable = false)
-    private LocalDate  showDate;
+    private LocalDate showDate;
 
-    @Column(name = "show_Time",columnDefinition = "TIME",nullable = false)
+    @Transient
     private LocalTime showTime;
 
     @CreationTimestamp
