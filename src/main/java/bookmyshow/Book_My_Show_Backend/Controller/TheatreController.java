@@ -31,7 +31,9 @@ public class TheatreController {
         TheatreRespDto responce =theatreServiceImp.getTheatre(id);
         return new ResponseEntity<>(responce,HttpStatus.ACCEPTED);
     }
-public ResponseEntity getAlltheatre(){
+
+    @GetMapping("/All")
+    public ResponseEntity getAlltheatre(){
 
     List<TheatreEntity> theatreEntityList =theatreServiceImp.getAllTheatre();
     return new ResponseEntity<>(theatreEntityList,HttpStatus.ACCEPTED);

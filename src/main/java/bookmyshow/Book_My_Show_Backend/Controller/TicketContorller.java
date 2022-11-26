@@ -16,7 +16,7 @@ public class TicketContorller {
     TicketServiceImp ticketServiceImp;
 
     @PostMapping("add")
-    public ResponseEntity addTicket(@RequestBody()BookTicketReqDto bookTicketReqDto){
+    public ResponseEntity bookTicket(@RequestBody()BookTicketReqDto bookTicketReqDto){
         ticketServiceImp.bookTicket(bookTicketReqDto);
         return new ResponseEntity<>("success", HttpStatus.CREATED);
     }

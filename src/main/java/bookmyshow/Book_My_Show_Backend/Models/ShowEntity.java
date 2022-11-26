@@ -33,7 +33,7 @@ public class ShowEntity {
     @Column(name="show_date",columnDefinition = "DATE",nullable = false)
     private LocalDate showDate;
 
-    @Transient
+    @Column(name = "show_Time",columnDefinition = "TIme",nullable = false)
     private LocalTime showTime;
 
     @CreationTimestamp
