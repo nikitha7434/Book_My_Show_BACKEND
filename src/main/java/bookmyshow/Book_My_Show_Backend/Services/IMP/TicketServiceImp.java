@@ -3,7 +3,7 @@ package bookmyshow.Book_My_Show_Backend.Services.IMP;
 import bookmyshow.Book_My_Show_Backend.Convertors.Ticketconvertor;
 import bookmyshow.Book_My_Show_Backend.DTO.BookTicketReqDto;
 import bookmyshow.Book_My_Show_Backend.DTO.EntityResponceDto.TicketRespoDto;
-import bookmyshow.Book_My_Show_Backend.DTO.TicketDto;
+
 import bookmyshow.Book_My_Show_Backend.Models.ShowEntity;
 import bookmyshow.Book_My_Show_Backend.Models.TicketEntity;
 import bookmyshow.Book_My_Show_Backend.Models.UserEntity;
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -35,6 +35,7 @@ public class TicketServiceImp implements TicketService {
     public TicketRespoDto getTicket(int id) {
 
        TicketEntity ticketEntity=ticketRepository.findById(id).get();
+
        TicketRespoDto ticketRespoDto=Ticketconvertor.convetorEntityToDTo(ticketEntity);
 
         return ticketRespoDto;
@@ -42,9 +43,13 @@ public class TicketServiceImp implements TicketService {
 // pending
     @Override
     public TicketRespoDto bookTicket(BookTicketReqDto bookTicketReqDto) {
+
         UserEntity userEntity = userRepositry.findById(bookTicketReqDto.getId()).get();
+
         ShowEntity showEntity =showRepository.findById(bookTicketReqDto.getShow_id()).get();
-        Set<String> requestSeats =bookTicketReqDto.getRequestedSeats();
+
+        Set<String> requestedSeats =bookTicketReqDto.getRequestedSeats();
+
         List<showSeatEntity>  showSeatsEntities =showEntity.getTheatreSeat();
 
         //step 1
@@ -52,11 +57,10 @@ public class TicketServiceImp implements TicketService {
         // option 1
         List<showSeatEntity> bookedSeats =showSeatsEntities
                 .stream()
-                .filter(seat ->
-                    seat.getSeatType().equals(bookTicketReqDto.getSeatType()) && !seat.isIsbooked()
-                            && requestSeats.contains(seat.getSeateNumber()))
+                .filter(seats -> seats.getSeatType().equals(bookTicketReqDto.getSeatType())&&!seats.isIsbooked()
+                         &&requestedSeats.contains(seats.getSeateNumber()))
                 .collect(Collectors.toList());
-
+               log.info("booked",bookedSeats);
 
        // option 2
 //        List<showSeatEntity> bookedseats1 =new ArrayList<>();
@@ -68,7 +72,7 @@ public class TicketServiceImp implements TicketService {
 //        }
 
 
-        if(bookedSeats.size()!= requestSeats.size()){
+        if(bookedSeats.size()!= requestedSeats.size()){
             // all the sites not avilable
             throw new Error("All Seats not avilable");
         }
@@ -77,7 +81,7 @@ public class TicketServiceImp implements TicketService {
         TicketEntity ticketEntity=TicketEntity.builder()
                 .user(userEntity)
                 .show(showEntity)
-                .seats(bookedSeats).build();
+                   .seats(bookedSeats).build();
 
         // step 3
         double amount=0;
@@ -100,6 +104,7 @@ public class TicketServiceImp implements TicketService {
 
         // add th ticket int the ticket list of the user
         userEntity.getListofTicket().add(ticketEntity);
+
         ticketEntity =ticketRepository.save(ticketEntity);
 
         return Ticketconvertor.convetorEntityToDTo(ticketEntity);

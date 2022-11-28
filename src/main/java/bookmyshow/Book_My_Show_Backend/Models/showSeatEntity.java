@@ -18,7 +18,6 @@ import java.util.Date;
 public class showSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private int id;
 
    @Column(nullable = false)
@@ -31,7 +30,7 @@ public class showSeatEntity {
 @Column(name = "seat_type", nullable = false)
     private SeatType seatType;
 
-    @Column(columnDefinition = "bit(1) defalut 0",nullable = false)
+    @Column(nullable = false)
     private boolean isbooked;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,4 +44,6 @@ public class showSeatEntity {
     @ManyToOne
     @JsonIgnore
     private TicketEntity ticket;
+
+
 }

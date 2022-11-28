@@ -13,7 +13,7 @@ public class BookTicketReqDto {
 
 
     int Show_id; // For each show i want to book ticket :showentity
-int id; // user id who is booking the tice :userEntity
+     int id; // user id who is booking the tice :userEntity
     SeatType seatType; // theatreseatentity
 
 }

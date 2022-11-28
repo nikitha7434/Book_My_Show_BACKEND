@@ -62,11 +62,11 @@ public class showServiceImp implements showServices {
 
       List<showSeatEntity> showSeatEntitiesList = new ArrayList<>();
 
-      log.info(String.valueOf(seats));
-      log.info("the list of theatreEntity seats");
-      for (TheatreSeatEntity tse :seats){
-        log.info(tse.toString());
-      }
+//      log.info(String.valueOf(seats));
+//      log.info("the list of theatreEntity seats");
+//      for (TheatreSeatEntity tse :seats){
+//        log.info(tse.toString());
+//      }
 
       //for all seats int the theatere
 

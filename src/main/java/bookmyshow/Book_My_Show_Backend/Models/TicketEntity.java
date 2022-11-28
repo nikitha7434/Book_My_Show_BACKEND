@@ -15,9 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 @Builder
-@Data
 @EntityListeners(value = {AuditingEntityListener.class})
 @Table(name = "ticket_tb")
 public class TicketEntity {
@@ -44,6 +42,7 @@ public class TicketEntity {
 
     @ManyToOne
     @JsonIgnore
+    @JoinColumn
     private ShowEntity show;
 
 @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
